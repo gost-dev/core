@@ -2,9 +2,17 @@ package ingress
 
 import "context"
 
-type Options struct{}
+type Options struct {
+	Service string
+}
 
 type Option func(opts *Options)
+
+func WithService(service string) Option {
+	return func(opts *Options) {
+		opts.Service = service
+	}
+}
 
 type Rule struct {
 	// Hostname is the hostname match pattern, e.g. example.com, *.example.org or .example.com.

@@ -5,11 +5,18 @@ import (
 )
 
 type Options struct {
-	Host string
-	Path string
+	Service string
+	Host    string
+	Path    string
 }
 
 type Option func(opts *Options)
+
+func WithService(service string) Option {
+	return func(opts *Options) {
+		opts.Service = service
+	}
+}
 
 func WithHostOpton(host string) Option {
 	return func(opts *Options) {
